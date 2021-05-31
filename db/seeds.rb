@@ -8,6 +8,9 @@
 
 require 'faker'
 
+Shops.destroy_all
+puts "Shops have been reset." if Shop.count == 0
+
 User.destroy_all
 puts "Users have been reset." if User.count == 0
 
@@ -19,5 +22,12 @@ puts "Users have been reset." if User.count == 0
     image: Faker::LoremPixel.image(size: "500x500", is_gray: true, category: 'people'),
     email: Faker::Internet.unique.free_email,
     password_digest: "password"
+  )
+end
+
+4.times do
+  Shop.create!(
+    user_id: Faker::Number.between(from: User.first.id, to: User.last.id),
+    name: Faker::Company.unique.name,
   )
 end
