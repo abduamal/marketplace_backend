@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
     # This creates a new user in the database using the data provided by the user
   post '/users' => 'users#create'
+    # Testing...
+  # get '/user_check' => 'users#index'
 end
