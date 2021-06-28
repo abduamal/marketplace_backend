@@ -36,7 +36,7 @@ class ShopsController < ApplicationController
       render json: {errors: shop.errors.full_messages}, status: :unprocessible_entity
     end
   end
-  
+
   private
 
   def shop_params
