@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Apiv2::ProductsController < ApplicationController
 
   def index
     products = Product.all
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
       render json: {errors: product.errors.full_messages}, status: :unprocessible_entity
     end
   end
-  
+
   private
 
   def product_params

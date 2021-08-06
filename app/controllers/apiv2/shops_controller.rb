@@ -1,4 +1,4 @@
-class ShopsController < ApplicationController
+class Apiv2::ShopsController < ApplicationController
 
   def index
     shops = Shop.all

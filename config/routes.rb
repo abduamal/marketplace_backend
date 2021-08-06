@@ -1,7 +1,9 @@
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :shops
-  resources :products
+  namespace :apiv2 do
+    resources :shops
+    resources :products
+  end
   #For the User Model, a user can only create an account aka signup:
     # This is the sign up form
   get '/signup' => 'users#new'
@@ -10,3 +12,5 @@ Rails.application.routes.draw do
     # Testing...
   # get '/user_check' => 'users#index'
 end
+
+# fetch('http:localhost:3000/apiv2/...')
