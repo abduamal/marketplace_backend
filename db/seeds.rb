@@ -1,18 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
+require 'awesome_print'
 
 Product.destroy_all
 puts "Products have been reset." if Product.count == 0
 
-# Shop.destroy_all
-# puts "Shops have been reset." if Shop.count == 0
+Shop.destroy_all
+puts "Shops have been reset." if Shop.count == 0
 
 # User.destroy_all
 # puts "Users have been reset." if User.count == 0
@@ -36,20 +29,36 @@ puts "Products have been reset." if Product.count == 0
 #   )
 # end
 
-Product.create!(
-  user_id: 2,
-  shop_id: 1,
-  name: "Spanish Translating Device",
-  price: 5000,
-  description: "This product translates all spanish words and sound effects",
-  quantity: 200
+Shop.create!(
+  name: "Beauty Bar",
+  industry: "Retail"
+)
+
+Shop.create!(
+  name: "Tech Talk",
+  industry: "Technology"
 )
 
 Product.create!(
-  user_id: 2,
-  shop_id: 2,
-  name: "Too Fly. An Autobiography.",
-  price: 5,
-  description: "This novel is written by me, Ramiro Waelchi",
+  shop_id: 1,
+  name: "Black Soap",
+  price: 20,
+  description: "2lb brick of black soap produced by mothers in Nigeria.",
   quantity: 20000
+)
+
+Product.create!(
+  shop_id: 1,
+  name: "Shea Butter",
+  price: 40,
+  description: "5lb brick of shea butter produced by mothers in Ghana.",
+  quantity: 20000
+)
+
+Product.create!(
+  shop_id: 2,
+  name: "Translating Device",
+  price: 7000,
+  description: "Patented device that translates up to 70 languages and dialects.",
+  quantity: 100000
 )
