@@ -1,8 +1,9 @@
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   namespace :apiv2 do
-    resources :shops
-    resources :products
+    resources :shops do
+      resources :products
+    end
   end
   #For the User Model, a user can only create an account aka signup:
     # This is the sign up form
