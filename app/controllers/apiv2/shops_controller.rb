@@ -3,35 +3,35 @@ class Apiv2::ShopsController < ApplicationController
 
   def index
     @shops = Shop.all
-    render json: ShopSerializer.new(@shops)
+    render json: @shops
   end
 
   def show
-    render json: ShopSerializer.new(@shop)
+    render json: @shop
   end
 
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      render json: ShopSerializer.new(@shop), status: :accepted
+      render json: @shop
     else
-      render json: {errors: @shop.errors.full_messages}, status: :unprocessible_entity
+      render json: {error: 'Error creating shop'}
     end
   end
 
   def update
     if @shop.update(shop_params)
-      render json: ShopSerializer.new(@shop), status: :accepted
+      render json: @shop
     else
-      render json: {errors: @shop.errors.full_messages}, status: :unprocessible_entity
+      render json: {errors: 'Error updating shop'}
     end
   end
 
   def destroy
     if @shop.destroy
-      render json: ShopSerializer.new(@shops)
+      render json: @shops
     else
-      render json: {errors: @shop.errors.full_messages}, status: :unprocessible_entity
+      render json: {error: 'Error deleting shop'}
     end
   end
 

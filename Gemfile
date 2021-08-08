@@ -18,7 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'awesome_print'
 
-gem 'fast_jsonapi'
+gem 'active_model_serializers'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

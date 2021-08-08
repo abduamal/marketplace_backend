@@ -1,5 +1,4 @@
-class ShopSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :name, :industry, :products
+class ShopSerializer < ActiveModel::Serializer
+  attributes :id, :name, :industry
   has_many :products
 end

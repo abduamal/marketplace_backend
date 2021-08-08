@@ -4,36 +4,36 @@ class Apiv2::ProductsController < ApplicationController
   before_action :find_product, only: [:show, :update, :destroy]
 
   def index
-    @products = @shop.products
-    render json: ProductSerializer.new(@products)
+    @products = Products.all
+    render json: @products
   end
 
   def show
-    render json: ProductSerializer.new(@product)
+    render json: @product
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = @shop.products.new(product_params)
     if @product.save
-      render json: ProductSerializer.new(@product), status: :accepted
+      render json: @product
     else
-      render json: {errors: @product.errors.full_messages}, status: :unprocessible_entity
+      render json: {error: 'Error creating product'}
     end
   end
 
   def update
     if @product.update(product_params)
-      render json: ProductSerializer.new(@product), status: :accepted
+      render json: @product
     else
-      render json: {errors: @product.errors.full_messages}, status: :unprocessible_entity
+      render json: {error: 'Error updating product'}
     end
   end
 
   def destroy
     if @product.destroy
-      render json: ProductSerializer.new(@products)
+      render json: @products
     else
-      render json: {errors: @product.errors.full_messages}, status: :unprocessible_entity
+      render json: {error: 'Error deleting product'}
     end
   end
 
