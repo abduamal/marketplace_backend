@@ -15,7 +15,7 @@ class Apiv2::ProductsController < ApplicationController
   def create
     @product = @shop.products.new(product_params)
     if @product.save
-      render json: @product
+      render json: @shop
     else
       render json: {error: 'Error creating product'}
     end
@@ -48,6 +48,6 @@ class Apiv2::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :quantity, :user_id, :shop_id)
+    params.require(:product).permit(:name, :price, :quantity, :description, :user_id, :shop_id)
   end
 end
